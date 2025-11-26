@@ -1,0 +1,10 @@
+com\example\pokedex\config\WebClientConfig.class
+com\example\pokedex\service\PokemonService.class
+com\example\pokedex\model\PokemonDetail.class
+com\example\pokedex\PokedexApplication.class
+com\example\pokedex\util\TextUtil.class
+com\example\pokedex\config\WebFluxCorsConfig.class
+com\example\pokedex\HomeController.class
+com\example\pokedex\config\CacheConfig.class
+com\example\pokedex\controller\PokedexController.class
+com\example\pokedex\util\EvolutionUtil.class

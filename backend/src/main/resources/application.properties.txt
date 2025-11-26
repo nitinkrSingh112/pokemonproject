@@ -1,0 +1,8 @@
+# Server port
+server.port=8080
+
+# Reactive web application type
+spring.main.web-application-type=reactive
+
+# Logging
+logging.level.com.example.pokedex=DEBUG

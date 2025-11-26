@@ -1,0 +1,219 @@
+/* App.css - centers everything and keeps flip working */
+
+/* base reset */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: Inter, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #081028 0%, #071233 60%);
+  color: #e6eef8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Root wrapper centers everything vertically and horizontally */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main container */
+.app-container {
+  width: 100%;
+  max-width: 920px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Title */
+.title {
+  margin: 0;
+  font-size: 3rem;
+  color: #ffd84d;
+  text-shadow: 0 8px 30px rgba(255,200,30,0.06);
+}
+
+/* Search row (centered) */
+.search-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.search-input {
+  width: 420px;
+  max-width: 78%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(180deg,#0a1220,#0f1726);
+  color: #dbe9ff;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: inset 4px 4px 12px rgba(0,0,0,0.6);
+}
+
+.search-input::placeholder { color: #9fb0d9; opacity: 0.7; }
+
+.search-btn {
+  padding: 11px 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg,#ffd84d,#ffb700);
+  border: none;
+  color: #071233;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255,184,0,0.12);
+}
+.search-btn:disabled { opacity: 0.7; cursor: default; }
+
+/* message */
+.hint, .error {
+  margin-top: 6px;
+  color: #b8d2ff;
+}
+.error { color: #ffb3b3; }
+
+/* Center area for the card */
+.center-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 520px; /* ensures vertical centering appearance */
+  padding: 12px;
+}
+
+/* Flip container (perspective) */
+.flip-container {
+  perspective: 1400px;
+  width: 360px;
+  height: 480px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* The visible card wrapper */
+.flipper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(.2,.9,.2,1);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(2,6,23,0.6);
+  overflow: visible;
+}
+
+/* When flipped rotate */
+.flip-container.flipped .flipper {
+  transform: rotateY(180deg);
+}
+
+/* front and back faces */
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* front styling */
+.front {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.006));
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* back styling */
+.back {
+  transform: rotateY(180deg);
+  background: linear-gradient(180deg, rgba(10,16,36,0.9), rgba(5,8,18,0.95));
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Pokemon name */
+.poke-name {
+  margin: 6px 0;
+  font-size: 1.4rem;
+  color: #ffd84d;
+  text-transform: capitalize;
+}
+
+/* picture */
+.poke-img {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  margin-top: 6px;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+}
+
+/* types row */
+.types {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.type-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: linear-gradient(180deg,#ffd84d,#ffb700);
+  color: #071233;
+  font-weight: 700;
+  text-transform: capitalize;
+  box-shadow: 0 8px 22px rgba(255,170,0,0.07);
+}
+
+/* stats list on the back */
+.stats-list {
+  width: 100%;
+  max-width: 300px;
+  padding: 0;
+  margin: 12px 0 0 0;
+  list-style: none;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+.stat-name { text-transform: capitalize; color: #dbe9ff; }
+.stat-val { font-weight: 700; color: #ffd84d; }
+
+/* small click hint */
+.click-note {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #bfcfe8;
+}
+
+/* responsiveness */
+@media (max-width: 420px) {
+  .flip-container { width: 300px; height: 420px; }
+  .poke-img { width: 200px; height: 200px; }
+  .search-input { width: 220px; }
+}
